@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Psychic Game</title>
+</head>
+<body>
+
+<div id="game">
+    
+<h1>Welcome to the God Like Psychic Academy</h1>
+<img src="https://readingsbymariateresa.files.wordpress.com/2014/01/psychic-ball.jpg">
+    <p>Guess what letter I'm thinking of to play</p>
+    <p id="wins">Wins: 0</p>
+    <p id="losses">Losses: 0</p>
+    <p id="guessesLeft"> Guesses Left: 10</p>
+    <p id="userGuesses">Your guesses so far:</p>
+
+</div>
+
+<script type="text/javascript">
+
+var listOfLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var wins = 0;
+var losses = 0;
+var guessesLeft = 10;
+var computerGuess = listOfLetters[Math.floor(Math.random() * listOfLetters.length)];
+var userGuesses = [];
+
+document.onkeyup = function(event) {
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    userGuesses.push(userGuess);
+    document.querySelector('#userGuesses').innerHTML = "User Guesses: " + userGuesses;
+
+    if (userGuess == computerGuess){
+        wins++; 
+        alert("You have graduated Psychic school!")
+        document.querySelector('#wins').innerHTML = "Wins: " + wins; 
+    }else{
+        losses++;
+        guessesLeft--;
+    document.querySelector('#guessesLeft').innerHTML="Guesses Left:" + guessesLeft;
+       console.log(guessesLeft);
+    document.querySelector('#losses').innerHTML = "Losses: " + losses;
+   } if (guessesLeft > 0){
+
+   }else 
+   document.body.innerHTML="Game Over"
+  };
+
+
+</script>
+</body>
+</html>
